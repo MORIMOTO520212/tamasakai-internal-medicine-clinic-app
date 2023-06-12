@@ -55,9 +55,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
             OutlinedButton(
                 onPressed: () => _opneUrl('https://tamasakainaika.timc03.jp/'), 
-                child: const Text(
-                  'ホームページ', 
-                  style: TextStyle(fontWeight: FontWeight.bold) )),
+                style: OutlinedButton.styleFrom(
+                  maximumSize: const Size.fromWidth(300)
+                ),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("ホームページ", style: TextStyle(
+                      fontSize: 20, 
+                      fontWeight: FontWeight.bold)
+                    ),
+                    Text("こちらからクリニックのホームページを確認できます。"),
+                  ],
+                ),
+            ),
 
           ],
         ),
