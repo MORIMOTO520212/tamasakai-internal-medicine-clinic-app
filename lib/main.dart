@@ -47,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
             MyElements.menuButton(
                 'https://zoom.us/j/3789782777?pwd=cnZyUXpKVDNmSVErYm91Q0oyWVk4Zz09',
                 'オンライン診療（Zoom）',
-                'ここからZoomを開いてオンライン診療を行います。'),
+                'ここからZoomを開いてオンライン診療を行います。',
+                isApp: true),
             MyElements.menuButton('https://tamasakainaika.timc03.jp/', 'ホームページ',
                 'こちらからクリニックのホームページを確認できます。'),
           ],
@@ -63,32 +64,37 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MyElements {
-  static Container menuButton(String url, String title, String message) {
+  // menuButton - メニューボタン
+  // isAppはtrueにするとURLからアプリを開くことができる
+  static Container menuButton(String url, String title, String message, {bool isApp = false}) {
     return Container(
-      margin: const EdgeInsets.only(top: 10, bottom: 10),
-      child: OutlinedButton(
-        onPressed: () => _opneUrl(url),
-        style: MyStyles.menuButton,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(title,
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text(message),
-          ],
-        ),
-      )
-    );
+        margin: const EdgeInsets.only(top: 10, bottom: 10),
+        child: OutlinedButton(
+          onPressed: () => _opneUrl(url, isApp),
+          style: MyStyles.menuButton,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(title,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(message),
+            ],
+          ),
+        ));
   }
 }
 
-void _opneUrl(String url) async {
+void _opneUrl(String url, bool isApp) async {
+  LaunchMode openMode = LaunchMode.platformDefault;
+  if (isApp) {
+    openMode = LaunchMode.externalNonBrowserApplication;
+  }
   final Uri urlParse = Uri.parse(url);
   if (await canLaunchUrl(urlParse)) {
-    await launchUrl(urlParse);
+    await launchUrl(urlParse, mode: openMode);
   } else {
-    throw 'このURLにはアクセスできません';
+    debugPrint('このURLにはアクセスできません');
   }
 }
 
