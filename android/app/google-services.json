@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "858680922459",
+    "project_id": "timc-38d06",
+    "storage_bucket": "timc-38d06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858680922459:android:2ca429daa61c9c91b08a7e",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858680922459-48cqlkkkdh25lbif6l1p5kli2bl06eae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2mqKzsbWHgpt2FBddo-ticTlENaIFXTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858680922459-48cqlkkkdh25lbif6l1p5kli2bl06eae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
